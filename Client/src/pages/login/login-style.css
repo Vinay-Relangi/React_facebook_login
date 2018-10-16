@@ -92,6 +92,7 @@ footer hr {
 
 article.container {
     max-width: 100vw;
-    padding: 0 400px;
+    padding: 0 15%;
     background: linear-gradient(white, #D3D8E8);
+    height: calc(100vh - 140px);
 }

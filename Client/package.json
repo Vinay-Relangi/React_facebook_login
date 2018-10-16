@@ -24,6 +24,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "font-awesome": "^4.7.0"
+    "font-awesome": "^4.7.0",
+    "react-router-dom": "^4.3.1"
   }
 }

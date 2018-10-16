@@ -3,9 +3,9 @@ import React from 'react';
 class LoginFooter extends React.Component {
 	render() {
 		return (
-			<footer class="container">
+			<footer className="container">
 				<hr />
-				<div class="footer-options">
+				<div className="footer-options">
 					<ul>
 						<li>
 							<a href="#">Mobile</a>
@@ -36,7 +36,7 @@ class LoginFooter extends React.Component {
 						</li>
 					</ul>
 				</div>
-				<small class="copyrights"> © Copyrights reserved 2018</small>
+				<small className="copyrights"> © Copyrights reserved 2018</small>
 			</footer>
 		);
 	}

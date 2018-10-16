@@ -1,24 +1,59 @@
 import React from 'react';
+import { Redirect } from 'react-router';
 
 class LoginHeader extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			password : ' ',
+			email    : ' '
+		};
+	}
+
+	handleChange = (e) => {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	};
+
+	onSubmit = (e) => {
+		e.preventDefault();
+		const form = {
+			password : this.state.password.trim(),
+			email    : this.state.email.trim()
+		};
+		if (!form.password || !form.email) {
+			return;
+		}
+		this.setState({
+			password : '',
+			email    : '',
+			toHome   : true
+		});
+		this.props.handleUserParent(true);
+	};
+
 	render() {
 		return (
 			<header>
-				<div class="container">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="logo">FACEBOOK</div>
+				<div className="container">
+					<div className="row">
+						<div className="col-sm-6">
+							<div className="logo">FACEBOOK</div>
 						</div>
-						<div class="col-sm-6 hidden-xs">
-							<div class="row">
-								<div class="col-sm-5">
-									<div class="form-group">
+						<div className="col-sm-6 hidden-xs">
+							<div className="row">
+								<div className="col-sm-5">
+									<div className="form-group">
 										<input
 											type="text"
-											class="form-control no-border"
+											className="form-control no-border"
 											placeholder="Email or Phone"
+											name="email"
+											value={this.state.email}
+											onChange={(e) => this.handleChange(e)}
 										/>
-										<div class="login-bottom-text checkbox hidden-sm">
+										<div className="login-bottom-text checkbox hidden-sm">
 											<label>
 												<input type="checkbox" />
 												Keep me sign in
@@ -26,15 +61,27 @@ class LoginHeader extends React.Component {
 										</div>
 									</div>
 								</div>
-								<div class="col-sm-5">
-									<div class="form-group">
-										<input type="text" class="form-control no-border" placeholder="Password" />
-										<div class="login-bottom-text hidden-sm"> Forgot your password? </div>
+								<div className="col-sm-5">
+									<div className="form-group">
+										<input
+											type="text"
+											className="form-control no-border"
+											placeholder="Password"
+											name="password"
+											value={this.state.password}
+											onChange={(e) => this.handleChange(e)}
+										/>
+										<div className="login-bottom-text hidden-sm"> Forgot your password? </div>
 									</div>
 								</div>
-								<div class="col-sm-2">
-									<div class="form-group">
-										<input type="button" value="login" class="btn btn-primary btn-header-login" />
+								<div className="col-sm-2">
+									<div className="form-group">
+										<input
+											type="button"
+											value="login"
+											className="btn btn-primary btn-header-login"
+											onClick={(e) => this.onSubmit(e)}
+										/>
 									</div>
 								</div>
 							</div>
